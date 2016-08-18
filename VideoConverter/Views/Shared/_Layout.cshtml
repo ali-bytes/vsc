@@ -1,0 +1,296 @@
+﻿@using System.Web.Optimization
+@using Resources
+@*<!DOCTYPE html>*@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+@* lang - The language of the page. *@
+@* no-js - The no JavaScript class is removed by modernizr if JavaScript is available. *@
+<html class="no-js" lang="@ViewData.FirstOrDefault(x => x.Key.Equals("langC")).Value.ToString()">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+    @* The order of the tags in the head is important for best performance and compatibility. *@
+    @* charset - The character encoding of the document. *@
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    @* viewport - Set the scale on mobile devices (For more info see https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag). *@
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @* title - The title of the page which appears in the browser window title. Aim for the title to be less than 70
+        characters. The site name appears at the end for better SEO. s *@
+    <title>@ViewData.FirstOrDefault(x => x.Key.Equals("pTitle")).Value.ToString() - @Application.Name</title>
+    <meta http-equiv="content-language" content="@ViewData.FirstOrDefault(x => x.Key.Equals("langC")).Value.ToString()" />
+
+    @* Icons & Platform Specific Settings (See http://rehansaeed.com/internet-favicon-madness/ for detailed
+        information). The order of these icons is very important. FireFox has a bug in it which can cause problems if
+        the order is changed. *@
+
+    @* Apple Icons - See https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Introduction.html#//apple_ref/doc/uid/30001261-SW1 *@
+    @* apple-touch-icon-57x57.png - Android Stock Browser and non-Retina iPhone and iPod Touch *@
+    <link rel="apple-touch-icon" sizes="57x57" href="/content/icons/apple-touch-icon-57x57.png">
+    @* apple-touch-icon-60x60.png - Same as apple-touch-icon-57x57.png, for non-retina iPhone with iOS7. *@
+    @* <link rel="apple-touch-icon" sizes="60x60" href="/content/icons/apple-touch-icon-60x60.png">*@
+    @* apple-touch-icon-72x72.png - iPad mini and the first- and second-generation iPad (1× display) on iOS ≤ 6 *@
+    <link rel="apple-touch-icon" sizes="72x72" href="/content/icons/apple-touch-icon-72x72.png">
+    @* apple-touch-icon-76x76.png - iPad mini and the first- and second-generation iPad (1× display) on iOS ≥ 7 *@
+    @*<link rel="apple-touch-icon" sizes="76x76" href="/content/icons/apple-touch-icon-76x76.png">*@
+    @* apple-touch-icon-114x114.png - iPhone (with 2× display) iOS ≤ 6 *@
+    <link rel="apple-touch-icon" sizes="114x114" href="/content/icons/apple-touch-icon-114x114.png">
+    @* apple-touch-icon-120x120.png - iPhone (with 2× and 3 display) iOS ≥ 7 *@
+    @*<link rel="apple-touch-icon" sizes="120x120" href="/content/icons/apple-touch-icon-120x120.png">*@
+    @* apple-touch-icon-144x144.png - iPad (with 2× display) iOS ≤ 6 *@
+    <link rel="apple-touch-icon" sizes="144x144" href="/content/icons/apple-touch-icon-144x144.png">
+    @* apple-touch-icon-152x152.png - iPad 3+ (with 2× display) iOS ≥ 7 *@
+    @*<link rel="apple-touch-icon" sizes="152x152" href="/content/icons/apple-touch-icon-152x152.png">*@
+    @* apple-touch-icon-180x180.png - iPad and iPad mini (with 2× display) iOS ≥ 8 *@
+    @*<link rel="apple-touch-icon" sizes="180x180" href="/content/icons/apple-touch-icon-180x180.png">*@
+
+    @* apple-mobile-web-app-title - The name of the application if pinned to the IOS start screen. *@
+    @* <meta name="apple-mobile-web-app-title" content=""> *@
+    @* apple-mobile-web-app-capable - Hide the browsers user interface on IOS, when the app is run in 'stand-alone'
+        mode. Any links to other pages that are clicked whilst your app is in stand-alone mode will launch the full
+        Safari browser. *@
+    @* <meta name="apple-mobile-web-app-capable" content="yes"> *@
+    @* apple-mobile-web-app-status-bar-style - default/black/black-translucent Styles the IOS status bar. Using
+        black-translucent makes it transparent and overlays it on top of your site, so make sure you have enough margin. *@
+    @* <meta name="apple-mobile-web-app-status-bar-style" content="black"> *@
+
+    @* Apple Startup Images - These splash screen images are only shown if apple-mobile-web-app-capable is set to true.
+        See https://gist.github.com/tfausak/2222823 *@
+    @* apple-touch-startup-image-1536x2008.png - iOS 6 & 7 iPad (retina, portrait) *@
+    @* <link rel="apple-touch-startup-image" href="/content/icons/apple-touch-startup-image-1536x2008.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"> *@
+    @* apple-touch-startup-image-1496x2048.png - iOS 6 & 7 iPad (retina, landscape) *@
+    @* <link rel="apple-touch-startup-image" href="/content/icons/apple-touch-startup-image-1496x2048.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"> *@
+    @* apple-touch-startup-image-768x1004.png - iOS 6 iPad (portrait) *@
+    @* <link rel="apple-touch-startup-image" href="/content/icons/apple-touch-startup-image-768x1004.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"> *@
+    @* apple-touch-startup-image-748x1024.png - iOS 6 iPad (landscape) *@
+    @* <link rel="apple-touch-startup-image" href="/content/icons/apple-touch-startup-image-748x1024.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"> *@
+    @* apple-touch-startup-image-640x1096.png - iOS 6 & 7 iPhone 5 *@
+    @* <link rel="apple-touch-startup-image" href="/content/icons/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> *@
+    @* apple-touch-startup-image-640x920.png - iOS 6 & 7 iPhone (retina) *@
+    @* <link rel="apple-touch-startup-image" href="/content/icons/apple-touch-startup-image-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> *@
+    @* apple-touch-startup-image-320x460.png - iOS 6 iPhone *@
+    @* <link rel="apple-touch-startup-image" href="/content/icons/apple-touch-startup-image-320x460.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)"> *@
+
+    @* favicon-32x32.png - For Safari on Mac OS. *@
+    @* <link rel="icon" type="image/png" href="/content/icons/favicon-32x32.png" sizes="32x32">*@
+    @* favicon-192x192.png - For Android Chrome M36 to M38 this icon is used. M39+ uses the manifest.json file specified below. *@
+    @* <link rel="icon" type="image/png" href="/content/icons/favicon-192x192.png" sizes="192x192">*@
+    @* favicon-96x96.png - For Google TV. *@
+    @* <link rel="icon" type="image/png" href="/content/icons/favicon-96x96.png" sizes="96x96">*@
+    @* favicon-16x16.png - The classic favicon, displayed in the tabs. *@
+    <link rel="icon" type="image/png" href="/content/icons/favicon-16x16.png" sizes="16x16">
+    @* Android/Chrome *@
+    @* manifest-json - The location of the browser configuration file. It contains locations of icon files, name of the
+        application and default device screen orientation. Note that the name field is mandatory.
+        See https://developer.chrome.com/multidevice/android/installtohomescreen. *@
+ @*   <link rel="manifest" href="@Url.RouteUrl(HomeControllerRoute.GetManifestJson)">*@
+    @* theme-color - The colour of the toolbar in Chrome M39+
+        See http://updates.html5rocks.com/2014/11/Support-for-theme-color-in-Chrome-39-for-Android *@
+    <meta name="theme-color" content="#1B4D80">
+    @* mobile-web-app-capable - Run Android/Chrome version M31 to M38 in stand-alone mode, hiding the browser chrome. *@
+    @* <meta name="mobile-web-app-capable" content="yes"> *@
+
+    @* Windows 7 Taskbar - This depends on your site, so no code here. See http://www.buildmypinnedsite.com/windows7 *@
+
+    @* Windows 8 IE10 *@
+    @* application-name - The name of the application if pinned to the start screen. *@
+    @* <meta name="application-name" content=""> *@
+    @* msapplication-TileColor - The tile colour which shows around your tile image (msapplication-TileImage). *@
+    @* <meta name="msapplication-TileColor" content="#5cb95c"> *@
+    @* msapplication-TileImage - The tile image. *@
+    @* <meta name="msapplication-TileImage" content="/content/icons/mstile-144x144.png"> *@
+
+    @* Windows 8.1/10 IE11/Edge - See http://www.buildmypinnedsite.com *@
+    @* msapplication-config - The location of the browser configuration file. This is not required if the
+        browserconfig.xml file is at the root of the site. *@
+    @* <meta name="msapplication-config" content="@Url.RouteUrl(HomeControllerRoute.GetBrowserConfigXml)"> *@
+
+
+    @* Custom Fonts - If you are using custom fonts. Consider using the Google Web Fonts Loader in async mode.
+        See https://github.com/typekit/webfontloader. *@
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    @Scripts.RenderFormat(@"<script src=""{0}"" async></script>", "~/bundles/modernizr")
+    @Styles.Render("~/Content/sitecss")
+    @*<link href="~/Content/css/sitecss.min.css" rel="stylesheet" />*@
+    @*<meta name="x-font-awesome-stylesheet-fallback-test" class="fa">
+        @Styles.Render("~/sbund/fa")*@
+    
+
+    @* Description - Used by search engines. Aim for more than 160 characters. *@
+    <meta name="description" content="@ViewData.FirstOrDefault(x => x.Key.Equals("pDesc")).Value.ToString()">
+    <meta name="keywords" content="@Token.Keywords"/>
+
+    <meta name="Distribution" content="Global" />
+    <meta name="googlebot" content="index, follow">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website" />
+   @* <meta property="og:type" content="article" />*@
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="@ViewData.FirstOrDefault(x => x.Key.Equals("pTitle")).Value.ToString()" />
+    <meta property="og:site_name" content="VidFrom.com" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="~/images/soc.png" />
+    <meta property="og:url" content="http://vidfrom.com/" />
+    @*<meta property="fb:app_id" content="">*@
+   
+    <meta property="article:author" content="https://www.facebook.com/Vid-From-551024781724494">
+    <meta property="article:publisher" content="https://www.facebook.com/Vid-From-551024781724494">
+    <meta itemprop="name" content="Free Youtube Video Downloader & Youtube to Mp3 - VidFrom.com">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="@ViewData.FirstOrDefault(x => x.Key.Equals("pDesc")).Value.ToString()">
+    <meta itemprop="image" content="~/images/soc.png">
+
+    <meta name='application-name' content="VidFrom.com - Youtube Video Downloader & Youtube to Mp3" />
+    <meta name="msapplication-TileImage" content="~/images/soc.png" />
+    <meta name="msapplication-TileColor" content="#1B4D80" />
+
+    <link href="https://plus.google.com/106996440850991563330/" rel="publisher" />
+    <meta name="google-site-verification" content="jxDrXZuegbGD5gTAmyvxoA1Y7TJAF50xTmc9bUpobJ0" />
+
+    @* Canonical - The URL of the current page. Stops case differences and http/https being treated as different URL's
+        by search engines. The settings in this project should make this redundant, unless you are mixing HTTP and
+        HTTPS or you have multiple URL's to the same resource which you should avoid.
+        (See http://googlewebmastercentral.blogspot.co.uk/2009/02/specify-your-canonical.html). *@
+    <link rel="canonical" href="@ViewData.FirstOrDefault(x => x.Key.Equals("canonical")).Value.ToString()">
+
+
+    <link rel="alternate" hreflang="x-default" href="http://www.vidfrom.com/" />
+    <link rel="alternate" hreflang="en" href="http://www.vidfrom.com/" />
+    <link rel="alternate" hreflang="de" href="http://www.vidfrom.com/de" />
+    <link rel="alternate" hreflang="fr" href="http://www.vidfrom.com/fr" />
+    <link rel="alternate" hreflang="es" href="http://www.vidfrom.com/es" />
+    <link rel="alternate" hreflang="it" href="http://www.vidfrom.com/it" />
+    <link rel="alternate" hreflang="nl" href="http://www.vidfrom.com/nl" />
+    <link rel="alternate" hreflang="tr" href="http://www.vidfrom.com/tr" />
+    <link rel="alternate" hreflang="pl" href="http://www.vidfrom.com/pl" />
+    <link rel="alternate" hreflang="el" href="http://www.vidfrom.com/el" />
+    <link rel="alternate" hreflang="pt" href="http://www.vidfrom.com/pt" />
+    <link rel="alternate" hreflang="hr" href="http://www.vidfrom.com/hr" />
+    <link rel="alternate" hreflang="sq" href="http://www.vidfrom.com/sq" />
+    <link rel="alternate" hreflang="sr" href="http://www.vidfrom.com/sr" />
+    <link rel="alternate" hreflang="bg" href="http://www.vidfrom.com/bg" />
+    <link rel="alternate" hreflang="ro" href="http://www.vidfrom.com/ro" />
+    <link rel="alternate" hreflang="hu" href="http://www.vidfrom.com/hu" />
+    <link rel="alternate" hreflang="nb" href="http://www.vidfrom.com/nb" />
+    <link rel="alternate" hreflang="fa" href="http://www.vidfrom.com/fa" />
+    <link rel="alternate" hreflang="ja" href="http://www.vidfrom.com/ja" />
+    <link rel="alternate" hreflang="vi" href="http://www.vidfrom.com/vi" />
+    <link rel="alternate" hreflang="cs" href="http://www.vidfrom.com/cs" />
+
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+
+    @* You can use the head section to render additional meta tags. *@
+    @RenderSection("head", required: false)
+
+</head>
+<body class="homepage">
+    <header id="header">
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button id="navbtn" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h1>
+                        <a class="navbar-brand" href="http://www.vidfrom.com/" title="VidFrom: Download YouTube Videos, Facebook, Vimeo, Twitter, Soundcloud, instagram, Vine.co, Mixcloud, AbcNews and more..">
+                            VidFrom: Download YouTube Videos, Facebook, Vimeo, Twitter, Soundcloud, instagram, Vine.co, Mixcloud, AbcNews and more..
+                        </a>
+                    </h1>
+                </div>
+
+                <div id="navbar" class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav smnav">
+                        <li class="">
+                            <a id="bookmark-this" href="#" title="Bookmark This Page">Bookmark This Page</a>
+                            
+                        </li>
+                        <li class="dropdown" id="langdrop">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drp"><img width="16" class="flag flag-@ViewData.FirstOrDefault(x => x.Key.Equals("langCFlag")).Value.ToString() bl" height="11" title="@ViewData.FirstOrDefault(x => x.Key.Equals("langName")).Value.ToString()"> @ViewData.FirstOrDefault(x => x.Key.Equals("langName")).Value.ToString() <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu smmenu">
+                                <li><a href="/en"><img width="16" class="flag flag-us bl" height="11" title="English"><em> English</em></a></li>
+                                <li><a href="/fr"><img width="16" class="flag flag-fr bl" height="11" title="français"><em> français</em></a></li>
+                                <li><a href="/es"><img width="16" class="flag flag-es bl" height="11" title="español"><em> español</em></a></li>
+                                <li><a href="/de"><img width="16" class="flag flag-de bl" height="11" title="Deutsch"><em> Deutsch</em></a></li>
+                                <li><a href="/bg"><img width="16" class="flag flag-bg bl" height="11" title="български език"><em> български</em></a></li>
+                                <li><a href="/ar"><img width="16" class="flag flag-sa bl" height="11" title="العربية"><em> العربية</em></a></li>
+                                <li><a href="/tr"><img width="16" class="flag flag-tr bl" height="11" title="Türkçe"><em> Türkçe</em></a></li>
+                                <li><a href="/fa"><img width="16" class="flag flag-ir bl" height="11" title="فارسی"><em> فارسی</em></a></li>
+                                <li><a href="/el"><img width="16" class="flag flag-gr bl" height="11" title="Greek"><em> Ελληνικά</em></a></li>
+                                <li><a href="/hr"><img width="16" class="flag flag-hr bl" height="11" title="hrvatski jezik"><em> hrvatski jezik</em></a></li>
+                                <li><a href="/hu"><img width="16" class="flag flag-hu bl" height="11" title="magyar"><em> magyar</em></a></li>
+                                <li><a href="/it"><img width="16" class="flag flag-it bl" height="11" title="italiano"><em> italiano</em></a></li>
+                                <li><a href="/ja"><img width="16" class="flag flag-jp bl" height="11" title="Japanese"><em> 日本語</em></a></li>
+                                <li><a href="/nl"><img width="16" class="flag flag-nl bl" height="11" title="Nederlands"><em> Nederlands</em></a></li>
+                                <li><a href="/nb"><img width="16" class="flag flag-no bl" height="11" title="norsk (bokmål)"><em> norsk (bokmål)</em></a></li>
+                                <li><a href="/pl"><img width="16" class="flag flag-pl bl" height="11" title="jezyk polski"><em> jezyk polski</em></a></li>
+                                <li><a href="/pt"><img width="16" class="flag flag-pt bl" height="11" title="português"><em> português</em></a></li>
+                                <li><a href="/ro"><img width="16" class="flag flag-ro bl" height="11" title="limba româna"><em> limba româna</em></a></li>
+                                <li><a href="/sq"><img width="16" class="flag flag-al bl" height="11" title="Shqip"><em> Shqip</em></a></li>
+                                <li><a href="/sr"><img width="16" class="flag flag-sr bl" height="11" title="српски језик"><em> srpski</em></a></li>
+                                <li><a href="/vi"><img width="16" class="flag flag-vi bl" height="11" title="Tiếng Việt"><em> Tiếng Việt</em></a></li>
+                                <li><a href="/cs"><img width="16" class="flag flag-cz bl" height="11" title="Czech"><em> čeština</em></a></li>
+
+                            </ul>
+                        </li>
+
+
+
+                    </ul>
+
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+
+    </header><!--/header-->
+    @*<section id="headads" class="hads">
+        <div class="container">
+            <div class="center">
+                <h2>Ads</h2>
+            </div>
+        </div>
+    </section>*@
+
+    @RenderBody()
+    <hr>
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="row" style="padding-top: 6px;">
+                <div class="col-sm-6">
+                    @* <p>&copy; @DateTime.Now.Year - @Application.Name</p>*@
+                    <p>Copyright © vidfrom.com 2016, All rights reserved.</p>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                       @* <li><a href="#">Contact: </a></li>*@
+                        <li><a href="/terms">Terms of Use</a></li>
+                        <li><a href="/terms/#privacy">Privacy</a></li>
+                        <!-- Histats.com  START  (aync)-->
+                        <script type="text/javascript">
+var _Hasync = _Hasync || [];
+                            _Hasync.push(['Histats.start', '1,3447635,4,0,0,0,00010000']);
+                            _Hasync.push(['Histats.fasi', '1']);
+                            _Hasync.push(['Histats.track_hits', '']);
+                            (function () {
+                                var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+                                hs.src = ('//s10.histats.com/js15_as.js');
+                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+                            })();</script>
+                        <noscript><a href="http://www.histats.com" target="_blank"><img  src="http://sstatic1.histats.com/0.gif?3447635&101" alt="page hit counter" border="0"></a></noscript>
+                        <!-- Histats.com  END  -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+        @Scripts.Render("~/bundles/alljquery")
+    <script type='text/javascript' src='//eclkmpsa.com/adServe/banners?tid=135926_234145_0&tagid=2'></script>
+ 
+
+
+    @* @Scripts.Render("~/bundles/jqueryval")*@
+    @*@Scripts.Render("~/bundles/jqueryvalunobtrusive")*@
+    @*  @Scripts.Render("~/bundles/bootstrap")*@
+    @*@Scripts.Render("~/bundles/site")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

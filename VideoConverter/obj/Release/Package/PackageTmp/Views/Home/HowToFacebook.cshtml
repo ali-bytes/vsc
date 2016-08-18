@@ -1,0 +1,131 @@
+﻿@using System.Globalization
+@using Resources
+@{
+    ViewBag.Title = "how to download facebook videos";
+    Layout = "../Shared/_Layout.cshtml";
+    string lang2 = ViewData.FirstOrDefault(x => x.Key.Equals("lang")).Value.ToString();
+    var culture = new CultureInfo(lang2);
+
+    ViewData.Add("langName", culture.NativeName);
+    ViewData.Add("langC", lang2);
+
+    string cano = lang2 == "en" ? "" : lang2;
+    ViewData.Add("canonical", "http://vidfrom.com/how-to-download-facebook-videos");
+
+    if (lang2 == "ar" || lang2 == "fa")
+    {
+        ViewData.Add("dir", "rtl");
+    }
+    else
+    {
+        ViewData.Add("dir", "ltr");
+    }
+
+    string pTitle = Token.ResourceManager.GetString("HowToDownFaceTilte", culture);
+    ViewData.Add("pTitle", pTitle);
+
+    string pDesc = Token.ResourceManager.GetString("HowToDownFaceDesc", culture);
+    ViewData.Add("pDesc", pDesc);
+
+    if (lang2 == "en")
+    {
+        ViewData.Add("langCFlag", "us");
+    }
+    else if (lang2 == "fa")
+    {
+        ViewData.Add("langCFlag", "ir");
+    }
+    else if (lang2 == "el")
+    {
+        ViewData.Add("langCFlag", "gr");
+    }
+    else if (lang2 == "ja")
+    {
+        ViewData.Add("langCFlag", "jp");
+    }
+    else if (lang2 == "nb")
+    {
+        ViewData.Add("langCFlag", "no");
+    }
+    else if (lang2 == "sq")
+    {
+        ViewData.Add("langCFlag", "al");
+    }
+    else if (lang2 == "cs")
+    {
+        ViewData.Add("langCFlag", "cz");
+    }
+    else
+    {
+        ViewData.Add("langCFlag", lang2);
+    }
+}
+<style type="text/css">
+    .pd {
+        padding: 2%;
+    }
+    .step {
+        font-size: 25px;
+    }
+    .howto {
+        font-size: 15px;
+    }
+  
+</style>
+
+<div class="container mcon ">
+    <div class="row" style="margin-top: 4%;">
+        <section id="contain" class="col-xs-12 contain pd">
+            <div class="step"> Step 1</div>
+            <br/>
+            <div class="howto">
+                <p>
+                    Play the video, then <b>Right Click -> Show video URL</b>. See screenshot below.
+                </p>
+            </div>
+            <br/>
+            <img class="img-responsive himg img-rounded" alt="youtube Video Downloader" src="~/images/download-facebook-video-step-1.png"/>
+            <br/>
+            <div class="step"> Step 2</div>
+            <br/>
+            <div class="howto">
+                <p>
+                    Go to <a href="http://vidfrom.com"><b style="color: rgb(12, 189, 253);">VIDFROM.com</b></a>. Then <b>paste the URL</b> and <b>Click 'Download'</b>, like the screenshot below
+                </p>
+            </div>
+            <br/>
+            <img class="img-responsive himg img-rounded" alt="youtube Video Downloader" style="border: 1px solid;" src="~/images/download-facebook-video-step-2.jpg"/>
+            <br/>
+
+            <br/>
+            <div class="col-xs-12 socMain">
+                <div class=" col-xs-2 socFace">
+                    <div class="fb-like" data-href="https://www.facebook.com/vidfromcom/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+                </div>
+                <div class="col-xs-10 socAdd">
+                    <div class="addthis_sharing_toolbox"></div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </div>
+</div>
+@section scripts
+{
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-77340743-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+}
+

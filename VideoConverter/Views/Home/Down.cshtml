@@ -1,0 +1,214 @@
+﻿@model VideoConverter.Controllers.YoutubeResult
+
+@using System.Globalization
+@using Resources
+@{
+    ViewBag.Title = "how to download facebook videos";
+    Layout = "../Shared/_Layout.cshtml";
+    string lang2 = ViewData.FirstOrDefault(x => x.Key.Equals("lang")).Value.ToString();
+    var culture = new CultureInfo(lang2);
+
+    ViewData.Add("langName", culture.NativeName);
+    ViewData.Add("langC", lang2);
+
+    string cano = lang2 == "en" ? "" : lang2;
+    ViewData.Add("canonical", "http://vidfrom.com/how-to-download-facebook-videos");
+
+    if (lang2 == "ar" || lang2 == "fa")
+    {
+        ViewData.Add("dir", "rtl");
+    }
+    else
+    {
+        ViewData.Add("dir", "ltr");
+    }
+
+    string pTitle = Token.ResourceManager.GetString("HowToDownFaceTilte", culture);
+    ViewData.Add("pTitle", pTitle);
+
+    string pDesc = Token.ResourceManager.GetString("HowToDownFaceDesc", culture);
+    ViewData.Add("pDesc", pDesc);
+
+    if (lang2 == "en")
+    {
+        ViewData.Add("langCFlag", "us");
+    }
+    else if (lang2 == "fa")
+    {
+        ViewData.Add("langCFlag", "ir");
+    }
+    else if (lang2 == "el")
+    {
+        ViewData.Add("langCFlag", "gr");
+    }
+    else if (lang2 == "ja")
+    {
+        ViewData.Add("langCFlag", "jp");
+    }
+    else if (lang2 == "nb")
+    {
+        ViewData.Add("langCFlag", "no");
+    }
+    else if (lang2 == "sq")
+    {
+        ViewData.Add("langCFlag", "al");
+    }
+    else if (lang2 == "cs")
+    {
+        ViewData.Add("langCFlag", "cz");
+    }
+    else
+    {
+        ViewData.Add("langCFlag", lang2);
+    }
+}
+@section head
+{
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        .fa-twitter {
+            color: #55ACEE;
+        }
+
+        .fa-youtube-play {
+            color: #AA0F09;
+        }
+
+        .fa-soundcloud {
+            color: #FF6600;
+            font-size: 29px;
+        }
+
+        .fa-vimeo {
+            color: #2AB8E7;
+        }
+
+        .fa-facebook-square {
+            color: #3A5BAD;
+        }
+
+        .fa-vine {
+            color: #02C191;
+        }
+
+        .fa-instagram {
+            color: #8B5741;
+        }
+
+        .fa-mixcloud {
+            font-size: 29px;
+        }
+
+        .liveleak {
+            width: 32px;
+            height: 32px;
+            background-repeat: no-repeat;
+            -moz-background-size: 64px;
+            -o-background-size: 64px;
+            -webkit-background-size: 64px;
+            background-size: 64px;
+        }
+
+        .bl {
+            content: url('data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');
+        }
+
+        .lead a, .wel a {
+            cursor: text;
+        }
+
+        .ic {
+            max-width: 256px;
+            max-height: 256px;
+            background: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDQ0Ny45NDIgNDQ3Ljk0MyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDQ3Ljk0MiA0NDcuOTQzOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTIwMy44MDYsMC40ODJjLTE5LjY2OC0zLjM0Ni0zNS43NiwxMS4xMzktMzUuNzYsMzEuMDg2djIwNi4xNjZjLTExLjY0Mi00LjI3MS0yNC4xNjUtNi43MjUtMzcuMjgxLTYuNzI1ICAgYy01OS45MDUsMC0xMDguNDY5LDQ4LjU2Ni0xMDguNDY5LDEwOC40NzNjMCw1OS45MDMsNDguNTY0LDEwOC40NjEsMTA4LjQ2OSwxMDguNDYxYzM0LjE0MSwwLDY0LjU0LTE1LjgyLDg0LjQwNi00MC40ODIgICBsLTQ5LjY1OC00OS42NjRjLTE1LjExNi0xNS4xMTItMTEuNzA4LTI4LjkwMS05LjU0Mi0zNC4xNGMyLjE2Ni01LjIzMyw5LjUxNC0xNy40LDMwLjg4My0xNy40aDE4LjA4MnYtNTYuODg1ICAgYzAtMjEuMTMyLDE0LjYxNy0zOC44NjIsMzQuMjY2LTQzLjc0NWMwLjAzMi00NC4zNzMsMC4wMzItODEuODA4LDAuMDMyLTgxLjgwOGMxNDAuMTQ3LDAsMTMxLjcyNCw4My45NzQsMTE1LjMyNSwxMzIuMTk2ICAgYy02LjQyLDE4Ljg4NC0yLjYwMSwyMi4wNSwxMC44OTMsNy4zNTRDNTM2LjQ3Myw3Ny4xMDYsMjk4LjM4LDE2LjU2NiwyMDMuODA2LDAuNDgyeiIgZmlsbD0iI2Y1NzIwNyIvPgoJPHBhdGggZD0iTTMwMS4wNjEsMjIzLjg3NmgtNTAuOTk0Yy0zLjkxMSwwLTcuNTc0LDAuOTUtMTAuODg5LDIuNTIzYy04LjYxNiw0LjA5LTE0LjYxNSwxMi43OTgtMTQuNjE1LDIyLjk3M3Y3Ni41MWgtMzcuNzA4ICAgYy0xNC4wODIsMC0xNy40MjgsOC4wNzEtNy40NjYsMTguMDI5bDQ2Ljg5Myw0Ni44OThsMzEuMjUsMzEuMjQ2YzQuOTg0LDQuOTg1LDExLjUxMyw3LjQ3NCwxOC4wMzMsNy40NzQgICBjNi41MjMsMCwxMy4wNTItMi40ODQsMTguMDI5LTcuNDc0bDc4LjE1Mi03OC4xNDVjOS45NTEtOS45NTgsNi42MDgtMTguMDI5LTcuNDctMTguMDI5aC0zNy43MXYtNzYuNTEgICBDMzI2LjU2NywyMzUuMjkzLDMxNS4xNDYsMjIzLjg3NiwzMDEuMDYxLDIyMy44NzZ6IiBmaWxsPSIjZjU3MjA3Ii8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==) center no-repeat;
+        }
+
+        .radds {
+            margin-top: 5%;
+        }
+
+        .headads {
+            text-align: center;
+            padding-bottom: 1%;
+        }
+
+        #det {
+            margin-top: 2%;
+        }
+
+        @@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            .dg {
+                vertical-align: bottom;
+            }
+        }
+    </style>
+}
+
+<div class="container" style="margin-top: 40px">
+    <div class="row">
+        <div id="deto">
+            <div id="indet" class="det">
+                <a class="aim" href=" @Html.DisplayFor(modelItem => Model.Url) " target=" _blank" rel="nofollow"><img src=" @Html.DisplayFor(modelItem => Model.ImgLink) " class=" im" style="max-width: 250px;" /></a>
+                <br /><b>Title: </b> <a href="" class="lnk" id="lnktit" target="_blank" rel="nofollow">@Html.DisplayFor(modelItem => Model.Title)</a><br />
+                <br /><b>Duration: </b> <span class="du">@Html.DisplayFor(modelItem => Model.Duration) </span>
+                <br clear="both" /><br /><hr style="margin-top: 5px;" />
+
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 3%;">
+        <div id="resaultP" class="panel panel-default" >
+            <div class="panel-heading ph" style="background-color: rgb(239, 239, 239);">
+                <h3 class="panel-title" style="color: #378CE6;">@Token.SelectFormat</h3>
+            </div>
+            <hr style="margin-top: 0; margin-bottom: 0; border-top: 1px solid #276BE8;">
+            <div class="panel-body pb">
+                <div id="res">
+                    @{
+                        int num = 18972;
+                    foreach (var m in Model.DownloadLinks)
+                    {
+                        if (!m.LinkTitle.Contains("Only"))
+                        {
+                            if (m.LinkTitle.Contains("("))
+                            {
+                               m.LinkTitle= m.LinkTitle.Replace("(", "").Replace(")", "");
+                            }
+                            if (m.LinkTitle.Contains("Max"))
+                            {
+                                m.LinkTitle = m.LinkTitle.Replace("Max", "");
+                            }
+                      <input type="radio" data-dname="@m.LinkTitle" name="lk" id="@num" value="@m.Link"/>
+                        <label for="">@m.LinkTitle</label>
+                        <br/>
+                        num++;
+                        }
+                       
+                    }
+                        }
+                </div>
+                <br />
+                <a id="dwn" class="btn btn-success btn-block " href="#resaultP" download="1"><span class="fa-stack"><i class="fa fa-download fa-stack-1x"></i></span> @Token.DownloadVideo</a>
+                <button class="btn btn-info btn-block cn" id="dwnmp" style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; background-color: #00adeb; color: rgb(247, 245, 244); font-size: large; font-weight: bolder; display: none;" type="button">
+                    <span class="fa-stack ic"><i class="fa fa-stack-1x"></i></span> @Token.DownloadMp3 - 320 Kbps
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("input[type='radio']").click(function() {
+                var href = $(this).val();
+                var n = $(this).attr("data-dname");
+                var d = $('#dwn');
+                d.attr("href", href);
+                d.attr("download", n);
+
+            });
+        });
+    </script>
+}

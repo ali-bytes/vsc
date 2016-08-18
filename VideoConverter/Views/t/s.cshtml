@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>s</title>
+</head>
+<body>
+<div>
+    @Html.BeginForm("s","t",FormMethod.Post){
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email"/>
+    <label for="pass">Password</label>
+    <input type="text" name="pass" id="pass"/>
+
+    <input type="submit" class="btn btn-lg btn-success" value="LogIn"/>
+}
+</div>
+</body>
+</html>
